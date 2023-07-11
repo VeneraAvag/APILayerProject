@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="API Layer Currency conversion Thread Group">
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">2</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Live Endpoint Positive Tests"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Live Endpoint default parameters HTTP Request">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apikey" elementType="HTTPArgument">
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">apikey</stringProp>
+                  <stringProp name="Argument.value">${key}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${host}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/currency_data/live</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Live Endpoint optional parameters HTTP Request">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apikey" elementType="HTTPArgument">
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">apikey</stringProp>
+                  <stringProp name="Argument.value">${key}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${host}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/currency_data/live?source=CAD&amp;currencies=USD,EUR,RUB,ILS</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Historical Endpoint default parameters HTTP Request">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apikey" elementType="HTTPArgument">
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">apikey</stringProp>
+                  <stringProp name="Argument.value">${key}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${host}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/currency_data/historical?date=2019-08-08</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Historical Endpoint optionl parameters HTTP Request">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="apikey" elementType="HTTPArgument">
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">apikey</stringProp>
+                  <stringProp name="Argument.value">${key}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${host}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/currency_data/historical?date=2010-12-11&amp;source=EUR&amp;currencies=USD,CAD,RUB,ILS</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion">
+            <stringProp name="DurationAssertion.duration">500</stringProp>
+          </DurationAssertion>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Negative Tests"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Incorrect key HTTP Request">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${host}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/currency_data/live?apikey=1234567890</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="51509">401</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Message Assertion">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="785231124">Unauthorized</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_message</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">8</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON message Assertion">
+              <stringProp name="JSON_PATH">$.message</stringProp>
+              <stringProp name="EXPECTED_VALUE">Invalid authentication credentials</stringProp>
+              <boolProp name="JSONVALIDATION">true</boolProp>
+              <boolProp name="EXPECT_NULL">false</boolProp>
+              <boolProp name="INVERT">false</boolProp>
+              <boolProp name="ISREGEX">true</boolProp>
+            </JSONPathAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer">
+          <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <stringProp name="RandomTimer.range">500.0</stringProp>
+        </GaussianRandomTimer>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header"/>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters">
+          <collectionProp name="UserParameters.names">
+            <stringProp name="3208616">host</stringProp>
+            <stringProp name="106079">key</stringProp>
+          </collectionProp>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="1867221390">
+              <stringProp name="620551646">api.apilayer.com</stringProp>
+              <stringProp name="2120320114">NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o</stringProp>
+            </collectionProp>
+          </collectionProp>
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
+        </UserParameters>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:\apache-jmeter-5.6\bin\APILayerCurrencyConversionTests.jmx</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
+1689013325952,326,Live Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,5806,208,2,2,https://api.apilayer.com/currency_data/live?apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,326,0,100
+1689013326193,309,Live Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,5812,208,2,2,https://api.apilayer.com/currency_data/live?apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,308,0,96
+1689013327497,233,Live Endpoint optional parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,1091,246,2,2,"https://api.apilayer.com/currency_data/live?source=CAD&currencies=USD,EUR,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",233,0,0
+1689013328071,280,Live Endpoint optional parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,1087,246,2,2,"https://api.apilayer.com/currency_data/live?source=CAD&currencies=USD,EUR,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",280,0,0
+1689013329220,226,Historical Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,5759,230,2,2,https://api.apilayer.com/currency_data/historical?date=2019-08-08&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,224,0,0
+1689013330241,250,Historical Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,5761,230,2,2,https://api.apilayer.com/currency_data/historical?date=2019-08-08&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,250,0,0
+1689013330953,186,Historical Endpoint optionl parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,1134,268,2,2,"https://api.apilayer.com/currency_data/historical?date=2010-12-11&source=EUR&currencies=USD,CAD,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",186,0,0
+1689013330997,249,Historical Endpoint optionl parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,1130,268,2,2,"https://api.apilayer.com/currency_data/historical?date=2010-12-11&source=EUR&currencies=USD,CAD,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",249,0,0
+1689013331752,87,Incorrect key HTTP Request,401,Unauthorized,API Layer Currency conversion Thread Group 1-2,text,false,,693,186,2,2,https://api.apilayer.com/currency_data/live?apikey=1234567890,87,0,0
+1689013332104,67,Incorrect key HTTP Request,401,Unauthorized,API Layer Currency conversion Thread Group 1-1,text,false,,699,186,2,2,https://api.apilayer.com/currency_data/live?apikey=1234567890,67,0,0
+1689013332785,225,Live Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,5812,208,2,2,https://api.apilayer.com/currency_data/live?apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,222,0,0
+1689013333867,234,Live Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,5810,208,2,2,https://api.apilayer.com/currency_data/live?apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,233,0,0
+1689013333907,215,Live Endpoint optional parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,1081,246,2,2,"https://api.apilayer.com/currency_data/live?source=CAD&currencies=USD,EUR,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",215,0,0
+1689013335102,209,Historical Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,5757,230,2,2,https://api.apilayer.com/currency_data/historical?date=2019-08-08&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,209,0,0
+1689013335439,227,Live Endpoint optional parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,1079,246,2,2,"https://api.apilayer.com/currency_data/live?source=CAD&currencies=USD,EUR,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",227,0,0
+1689013336289,220,Historical Endpoint optionl parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-2,text,true,,1132,268,2,2,"https://api.apilayer.com/currency_data/historical?date=2010-12-11&source=EUR&currencies=USD,CAD,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",220,0,0
+1689013336966,240,Historical Endpoint default parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,5759,230,2,2,https://api.apilayer.com/currency_data/historical?date=2019-08-08&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o,239,0,0
+1689013337793,69,Incorrect key HTTP Request,401,Unauthorized,API Layer Currency conversion Thread Group 1-2,text,false,,689,186,2,2,https://api.apilayer.com/currency_data/live?apikey=1234567890,69,0,0
+1689013338347,196,Historical Endpoint optionl parameters HTTP Request,200,OK,API Layer Currency conversion Thread Group 1-1,text,true,,1128,268,1,1,"https://api.apilayer.com/currency_data/historical?date=2010-12-11&source=EUR&currencies=USD,CAD,RUB,ILS&apikey=NvnKNHybWPh4Z8jBZGQ8txYJhsBBPo3o",196,0,0
+1689013338957,79,Incorrect key HTTP Request,401,Unauthorized,API Layer Currency conversion Thread Group 1-1,text,false,,691,186,1,1,https://api.apilayer.com/currency_data/live?apikey=1234567890,79,0,0
